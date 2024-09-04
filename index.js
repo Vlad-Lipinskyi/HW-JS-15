@@ -33,8 +33,16 @@ console.log(totalBalance);
 
 // 2 Завдання
 
-const peoplesWithFriendStas = peoples.filter(people => people.friends.includes("Stas")).map(people => people.name); 
-console.log(peoplesWithFriendStas); 
+let friendName = "Stas";
+
+const includesFriendName = peoples.reduce((acc, person) => {
+	if (person.friends.includes(friendName)) {
+		acc.push(person.name);
+	}
+	return acc;
+}, []);
+
+console.log(includesFriendName); 
 
 
 // 3 Завдання
@@ -45,5 +53,5 @@ console.log(sortedNamesNumberFriends);
 
 // 4 Завдання
 
-const sortedSkills = peoples.map(person => person.skills).sort(); 
-console.log(sortedSkills);
+const sortPeopleSkills = [...peoples].sort((a, b) => a.skills + b.skills).map(people => people.skills)
+console.log(sortPeopleSkills)
